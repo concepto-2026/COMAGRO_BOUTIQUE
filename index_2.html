@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comagro Boutique · Colecciones por Serranía</title>
+<meta name="description" content="Catálogo de colecciones de marca Ford, Peugeot, Fiat, Jeep y RAM para Comagro Boutique, diseñado y producido por Serranía.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400&display=swap" rel="stylesheet">
+<!--
+  ================================================================
+  ESTRUCTURA DE IMÁGENES (subir junto a este index.html en GitHub)
+  ================================================================
+  img/portada.jpg                         → foto de la portada principal
+  img/serrania-logo.png                   → logo Serranía (blanco, fondo transparente)
+  img/<coleccion>/portada.jpg             → foto de apertura de cada colección (opcional)
+  img/<coleccion>/bolsa.jpg               → bolsa Boutique de la marca
+  img/<coleccion>/<producto>/modelo.jpg   → foto con modelo
+  img/<coleccion>/<producto>/producto.jpg → foto de producto / conjunto
+  img/<coleccion>/<producto>/frente.jpg   → vista frontal
+  img/<coleccion>/<producto>/posterior.jpg→ vista posterior
+  img/<coleccion>/<producto>/detalle.jpg  → detalle de personalización
+  Variaciones de color (opcional): frente-<color>.jpg y posterior-<color>.jpg
+  (ej. frente-beige.jpg). Si no existen, se mantiene la vista principal.
+  Las carpetas y nombres exactos de cada producto están en el objeto CATALOGO.
+  Si una imagen no existe, el espacio muestra un marcador con la ruta esperada.
+  ================================================================
+-->
+<style>
+:root{
+  --teal:#12303b; --teal-2:#0c232c; --teal-3:#1c4351; --teal-4:#27586a;
+  --gold:#c9a96b; --gold-2:#e2cc9d; --sky:#8cc4e4;
+  --sand:#efe7dc; --sand-2:#e5d9ca; --paper:#faf8f4; --white:#ffffff;
+  --ink:#13242b; --muted:#66767c; --line:#e3ddd3;
+  --accent:#12303b;
+  --radius:18px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1320px,100% - 48px);margin-inline:auto}
+.eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;font-weight:600}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;background:var(--teal);color:var(--white);overflow:hidden;display:flex;flex-direction:column}
+.hero__arcs{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero__arcs path{fill:none;stroke-linecap:round}
+.hero__arcs .a1{stroke:var(--teal-2);stroke-width:120;stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 2.4s var(--ease) .1s forwards}
+.hero__arcs .a2{stroke:var(--teal-3);stroke-width:2;stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 3s var(--ease) .5s forwards;opacity:.9}
+.hero__arcs .a3{stroke:var(--gold);stroke-width:1;stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 3.4s var(--ease) .9s forwards;opacity:.55}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero__grain{position:absolute;inset:0;opacity:.07;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero__top{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+.brandmark{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.08em}
+.brandmark img{height:34px;width:auto}
+.brandmark .txt{font-size:1.05rem}
+.hero__top .eyebrow{color:var(--gold-2);opacity:.9}
+.hero__body{position:relative;z-index:3;flex:1;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-bottom:110px}
+.hero__kicker{display:inline-flex;align-items:center;gap:14px;color:var(--gold-2);margin-bottom:28px}
+.hero__kicker::before{content:"";width:46px;height:1px;background:var(--gold)}
+.wordmark{line-height:.9;margin-bottom:34px}
+.wordmark small{display:block;font-size:.72rem;letter-spacing:.5em;font-weight:500;color:var(--sky);margin-bottom:14px}
+.wordmark .w1{display:block;font-weight:800;font-size:clamp(3rem,8.6vw,7.4rem);letter-spacing:.02em}
+.wordmark .w2{display:block;font-weight:200;font-size:clamp(1.9rem,5.2vw,4.4rem);letter-spacing:.42em;margin-top:6px;color:var(--sand)}
+.hero__hook{font-size:clamp(1.25rem,2.3vw,1.85rem);font-weight:300;max-width:34ch;line-height:1.35;margin-bottom:12px}
+.hero__hook em{font-style:italic;color:var(--gold-2);font-weight:300}
+.rotator{height:1.7em;overflow:hidden;font-size:.95rem;color:rgba(255,255,255,.72);margin-bottom:38px;letter-spacing:.04em}
+.rotator ul{list-style:none;animation:rot 15s infinite var(--ease)}
+.rotator li{height:1.7em;display:flex;align-items:center;gap:10px}
+.rotator b{font-weight:700;color:var(--white);letter-spacing:.2em;font-size:.78rem}
+.rotator i{width:18px;height:1px;background:var(--gold);display:inline-block}
+@keyframes rot{0%,16%{transform:translateY(0)}20%,36%{transform:translateY(-1.7em)}40%,56%{transform:translateY(-3.4em)}60%,76%{transform:translateY(-5.1em)}80%,96%{transform:translateY(-6.8em)}100%{transform:translateY(0)}}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:all .35s var(--ease)}
+.btn--gold{background:var(--gold);color:var(--teal-2)}
+.btn--gold:hover{background:var(--gold-2);transform:translateY(-2px)}
+.btn--line{border:1px solid rgba(255,255,255,.35);color:var(--white)}
+.btn--line:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
+.btn svg{width:16px;height:16px}
+.hero__stats{display:flex;gap:40px;margin-top:48px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14);max-width:560px}
+.hero__stats div strong{display:block;font-size:2rem;font-weight:200;color:var(--white);line-height:1}
+.hero__stats div span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.hero__visual{position:relative;justify-self:end;width:min(100%,500px);aspect-ratio:4/5.2}
+.arch{position:absolute;inset:0;border-radius:260px 260px 22px 22px;overflow:hidden;background:linear-gradient(160deg,var(--teal-4),var(--teal-2));box-shadow:0 40px 90px rgba(0,0,0,.35);opacity:0;transform:translateY(40px);animation:up 1.4s var(--ease) .4s forwards}
+.arch img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:zoom 14s ease-out forwards}
+@keyframes zoom{to{transform:scale(1)}}
+@keyframes up{to{opacity:1;transform:none}}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,35,44,.55))}
+.arch-ring{position:absolute;inset:-18px;border:1px solid rgba(201,169,107,.45);border-radius:280px 280px 30px 30px;opacity:0;animation:up 1.4s var(--ease) .8s forwards}
+.hero__badge{position:absolute;left:-44px;bottom:60px;z-index:2;background:var(--sand);color:var(--teal);padding:18px 22px;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.3);opacity:0;animation:up 1.2s var(--ease) 1.2s forwards}
+.hero__badge span{display:block;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.hero__badge strong{font-size:1rem;font-weight:700;letter-spacing:.04em}
+.marquee{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid rgba(255,255,255,.12);overflow:hidden;padding:20px 0;background:rgba(12,35,44,.5);backdrop-filter:blur(6px)}
+.marquee__track{display:flex;gap:64px;width:max-content;animation:marq 32s linear infinite}
+.marquee__track span{font-size:.85rem;font-weight:700;letter-spacing:.5em;color:rgba(255,255,255,.78);white-space:nowrap;display:flex;align-items:center;gap:64px}
+.marquee__track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(18,48,59,.94);backdrop-filter:blur(12px);color:var(--white);transform:translateY(-100%);transition:transform .45s var(--ease)}
+.nav.show{transform:none}
+.nav__in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.nav__logo{font-weight:800;letter-spacing:.08em;font-size:.95rem;white-space:nowrap}
+.nav__logo span{font-weight:200;letter-spacing:.3em;margin-left:6px}
+.nav__links{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav__links::-webkit-scrollbar{display:none}
+.nav__links a{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:9px 16px;border-radius:100px;color:rgba(255,255,255,.66);transition:.3s;white-space:nowrap}
+.nav__links a:hover{color:var(--white)}
+.nav__links a.active{background:var(--gold);color:var(--teal-2)}
+.nav__bar{position:absolute;left:0;bottom:0;height:2px;background:var(--gold);width:0}
+
+/* ============ ÍNDICE ============ */
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:48px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(2rem,4.2vw,3.3rem);font-weight:200;line-height:1.1;letter-spacing:-.01em}
+.section-head h2 b{font-weight:700}
+.section-head p{max-width:46ch;color:var(--muted);font-size:.95rem}
+.index{padding:120px 0 110px}
+.index .eyebrow{color:var(--gold);margin-bottom:16px;display:block}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.card{position:relative;aspect-ratio:3/4.4;border-radius:var(--radius);overflow:hidden;color:var(--white);background:var(--c);isolation:isolate;transition:transform .5s var(--ease)}
+.card:hover{transform:translateY(-8px)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease)}
+.card:hover img{transform:scale(1.07)}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,35,44,.05) 30%,rgba(12,35,44,.88))}
+.card__n{position:absolute;top:20px;left:22px;font-size:.72rem;font-weight:600;letter-spacing:.2em;opacity:.8}
+.card__body{position:absolute;left:22px;right:22px;bottom:22px}
+.card__brand{font-size:1.55rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;line-height:1}
+.card__lema{font-size:.8rem;font-weight:300;font-style:italic;margin:8px 0 14px;color:var(--gold-2)}
+.card__meta{display:flex;justify-content:space-between;align-items:center;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.25);padding-top:12px}
+.card__meta svg{width:16px;transition:transform .4s var(--ease)}
+.card:hover .card__meta svg{transform:translateX(5px)}
+
+/* ============ COLECCIÓN ============ */
+.coll{--accent:var(--teal);scroll-margin-top:64px}
+.coll__open{position:relative;background:var(--teal);color:var(--white);overflow:hidden}
+.coll__open-in{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.coll__intro{padding:96px 64px 96px 0;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.coll__num{font-size:.72rem;letter-spacing:.32em;color:var(--gold-2);font-weight:600;display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.coll__num::after{content:"";width:60px;height:1px;background:var(--gold)}
+.coll__brand{font-size:clamp(3rem,7vw,6rem);font-weight:800;letter-spacing:.12em;line-height:.95;text-transform:uppercase}
+.coll__brand img{height:clamp(70px,9vw,120px);width:auto}
+.coll__lema{font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;letter-spacing:.34em;text-transform:uppercase;margin:22px 0 6px}
+.coll__sub{font-style:italic;font-weight:300;color:var(--gold-2);margin-bottom:26px}
+.coll__txt{font-size:.98rem;font-weight:300;color:rgba(255,255,255,.8);max-width:52ch}
+.coll__tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+.tag{font-size:.64rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85)}
+.coll__visual{position:relative;margin-right:calc((100vw - min(1320px,100vw - 48px))/-2)}
+.coll__visual .slot{position:absolute;inset:0;border-radius:0}
+.coll__visual::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,var(--teal) 0%,rgba(18,48,59,0) 35%);pointer-events:none}
+.coll__stripe{position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--accent);z-index:3}
+
+/* Barra de productos */
+.coll__bar{position:sticky;top:64px;z-index:20;background:rgba(250,248,244,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.coll__bar-in{display:flex;align-items:center;gap:20px;height:66px}
+.chips{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none;padding:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{font-size:.72rem;font-weight:500;letter-spacing:.06em;padding:9px 16px;border-radius:100px;color:var(--muted);white-space:nowrap;border:1px solid transparent;transition:.3s}
+.chip:hover{color:var(--ink);border-color:var(--line)}
+.chip.active{background:var(--teal);color:var(--white)}
+.arrows{display:flex;align-items:center;gap:10px}
+.counter{font-size:.75rem;font-weight:600;letter-spacing:.14em;color:var(--muted);min-width:58px;text-align:center}
+.counter b{color:var(--ink)}
+.arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.3s;background:var(--white)}
+.arrow:hover:not(:disabled){background:var(--teal);border-color:var(--teal);color:var(--white)}
+.arrow:disabled{opacity:.35;cursor:default}
+.arrow svg{width:16px;height:16px}
+
+/* Carrusel */
+.rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.rail::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;padding:56px 0 80px}
+.prod{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}
+.prod__model{position:relative}
+.prod__model .slot{aspect-ratio:4/5.3;border-radius:var(--radius)}
+.prod__ref{position:absolute;left:18px;top:18px;z-index:2;background:rgba(250,248,244,.92);backdrop-filter:blur(6px);padding:8px 14px;border-radius:100px;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.prod__info{padding-top:6px}
+.prod__type{font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px}
+.prod__type::before{content:"";width:28px;height:1px;background:var(--gold)}
+.prod__name{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:300;line-height:1.12;margin:12px 0 10px;letter-spacing:-.005em}
+.prod__name b{font-weight:700}
+.prod__desc{color:var(--muted);font-size:.92rem;max-width:60ch;margin-bottom:26px}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:30px}
+.gallery .slot{aspect-ratio:1;border-radius:12px;background:var(--white);border:1px solid var(--line)}
+.gallery .slot img{object-fit:contain;padding:6px}
+.gallery .slot.detail{background:var(--sand)}
+.gallery .slot.detail img{object-fit:cover;padding:0}
+.slot-label{position:absolute;left:8px;bottom:8px;z-index:2;font-size:.56rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:rgba(255,255,255,.9);color:var(--teal);padding:4px 8px;border-radius:100px;pointer-events:none}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:30px}
+.specs h4{font-size:.64rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.sw{display:flex;align-items:center;gap:8px;padding:5px 12px 5px 5px;border-radius:100px;border:1px solid var(--line);font-size:.72rem;font-weight:500;background:var(--white);transition:.3s}
+.sw i{width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.sw:hover{border-color:var(--ink)}
+.sw.active{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.sw.note{border-style:dashed;color:var(--muted);padding:5px 12px;cursor:default}
+.perso{list-style:none;display:grid;gap:8px}
+.perso li{font-size:.82rem;display:grid;grid-template-columns:14px 1fr;gap:10px;line-height:1.45}
+.perso li::before{content:"";width:7px;height:7px;border:1.5px solid var(--gold);transform:rotate(45deg);margin-top:6px}
+.perso li b{font-weight:600}
+.price{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--white)}
+.price table{width:100%;border-collapse:collapse;font-size:.8rem}
+.price th{background:var(--teal);color:var(--white);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:12px 16px;text-align:right}
+.price th:first-child{text-align:left}
+.price td{padding:12px 16px;border-top:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.price td:first-child{text-align:left;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.price tr.pv td:not(:first-child){font-weight:700;color:var(--teal)}
+.price tr.mg td:not(:first-child){color:var(--gold);font-weight:700}
+.price th.hl,.price td.hl{background:rgba(201,169,107,.12)}
+.price th.hl{background:var(--teal-3)}
+.price-note{font-size:.68rem;color:var(--muted);margin-top:10px}
+
+/* Bolsa */
+.bag{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;background:var(--sand);border-radius:24px;padding:48px}
+.bag .slot{aspect-ratio:16/10;border-radius:16px;background:var(--white)}
+.bag .slot img{object-fit:contain}
+.bag__price{display:inline-block;background:var(--teal);color:var(--white);font-size:2rem;font-weight:700;font-style:italic;padding:10px 26px;border-radius:12px;margin:18px 0 12px}
+
+/* Slots / placeholder */
+.slot{position:relative;overflow:hidden;background:var(--sand);cursor:zoom-in}
+.slot img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),opacity .4s}
+.slot:hover img{transform:scale(1.04)}
+.slot .ph{display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:10px;color:var(--muted);background:repeating-linear-gradient(135deg,var(--sand) 0 14px,var(--sand-2) 14px 15px)}
+.slot .ph span{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.slot .ph small{font-size:.54rem;word-break:break-all;opacity:.75;max-width:95%}
+.slot .ph svg{width:26px;height:26px;opacity:.5}
+.slot.empty{cursor:default}
+.slot.empty img{display:none}
+.slot.empty .ph{display:flex}
+.slot.empty .slot-label{display:none}
+.coll__visual .slot.empty .ph{background:linear-gradient(135deg,var(--teal-3),var(--teal-2));color:rgba(255,255,255,.4)}
+.coll__visual .slot.empty .ph span{color:rgba(255,255,255,.5)}
+
+/* ============ RESUMEN ============ */
+.summary{background:var(--white);padding:120px 0;border-top:1px solid var(--line)}
+.summary .eyebrow{color:var(--gold);margin-bottom:16px;display:block}
+.toggle{display:inline-flex;background:var(--sand);border-radius:100px;padding:5px}
+.toggle button{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:11px 20px;border-radius:100px;color:var(--muted);transition:.3s}
+.toggle button.on{background:var(--teal);color:var(--white)}
+.sum-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.sum-table th{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:right;padding:14px 12px;border-bottom:2px solid var(--teal)}
+.sum-table th:first-child,.sum-table th:nth-child(2){text-align:left}
+.sum-table td{padding:15px 12px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+.sum-table td:first-child{text-align:left;font-weight:700;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);width:120px}
+.sum-table td:nth-child(2){text-align:left}
+.sum-table tbody tr{transition:background .25s;cursor:pointer}
+.sum-table tbody tr:hover{background:var(--paper)}
+.sum-table .mg{color:var(--gold);font-weight:700}
+.sum-wrap{overflow-x:auto}
+
+/* ============ CIERRE ============ */
+.closing{position:relative;background:var(--teal);color:var(--white);text-align:center;padding:140px 0 90px;overflow:hidden}
+.closing svg.bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.closing .inner{position:relative;z-index:2}
+.closing .logo{display:inline-block;margin-bottom:34px}
+.closing .logo img{height:90px;width:auto;margin:auto}
+.closing .logo .txt{font-size:2.6rem;font-weight:600;letter-spacing:.04em}
+.closing h3{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:200;max-width:26ch;margin:0 auto 18px;line-height:1.25}
+.closing h3 em{color:var(--gold-2)}
+.closing p{color:rgba(255,255,255,.7);font-size:.9rem}
+.closing .foot{margin-top:80px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+
+/* ============ LIGHTBOX ============ */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(9,26,33,.96);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.35s var(--ease)}
+.lb.open{opacity:1;visibility:visible}
+.lb__stage{position:relative;width:min(92vw,1200px);height:78vh;display:flex;align-items:center;justify-content:center}
+.lb__stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;transform:scale(.96);opacity:0;transition:.45s var(--ease);cursor:zoom-in;user-select:none}
+.lb.open .lb__stage img.ready{transform:scale(1);opacity:1}
+.lb__stage img.zoomed{transform:scale(1.9)!important;cursor:zoom-out}
+.lb__cap{position:absolute;left:0;right:0;bottom:24px;text-align:center;color:var(--white)}
+.lb__cap b{display:block;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:4px}
+.lb__cap span{font-size:.95rem;font-weight:300}
+.lb__cap small{display:block;font-size:.7rem;color:rgba(255,255,255,.5);margin-top:6px;letter-spacing:.14em}
+.lb__btn{position:absolute;width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.25);color:var(--white);display:grid;place-items:center;transition:.3s;background:rgba(255,255,255,.04)}
+.lb__btn:hover{background:var(--gold);border-color:var(--gold);color:var(--teal-2)}
+.lb__btn svg{width:20px;height:20px}
+.lb__close{top:24px;right:24px}
+.lb__prev{left:24px;top:50%;transform:translateY(-50%)}
+.lb__next{right:24px;top:50%;transform:translateY(-50%)}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1100px){
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .prod{grid-template-columns:1fr 1fr;gap:32px}
+  .specs{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .wrap{width:calc(100% - 32px)}
+  .hero__body{grid-template-columns:1fr;padding-top:10px;gap:40px}
+  .hero__visual{justify-self:center;width:min(78%,300px);aspect-ratio:4/4.4;order:-1}
+  .hero__badge{padding:12px 16px}
+  .hero__badge{left:-10px;bottom:30px}
+  .hero__stats{gap:26px}
+  .hero__top .eyebrow{display:none}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .card:last-child{grid-column:span 2;aspect-ratio:16/10}
+  .coll__open-in{grid-template-columns:1fr}
+  .coll__visual{margin:0 -16px;height:300px;order:-1}
+  .coll__visual::before{background:linear-gradient(0deg,var(--teal) 0%,rgba(18,48,59,0) 50%)}
+  .coll__intro{padding:40px 0 64px}
+  .prod{grid-template-columns:1fr}
+  .prod__model .slot{aspect-ratio:4/4.6}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .bag{grid-template-columns:1fr;padding:24px}
+  .counter{display:none}
+  .lb__prev,.lb__next{top:auto;bottom:90px;transform:none}
+  .lb__stage{height:66vh}
+  .nav__logo span{display:none}
+}
+@media (max-width:520px){
+  .cards{grid-template-columns:1fr}
+  .card,.card:last-child{grid-column:auto;aspect-ratio:16/11}
+  .hero__stats div strong{font-size:1.6rem}
+  .arrow{width:38px;height:38px}
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+/* ============ BOTÓN WHATSAPP ============ */
+.wa{position:fixed;right:24px;bottom:24px;z-index:90;display:flex;align-items:center;gap:12px;text-decoration:none}
+.wa__icon{position:relative;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.25);transition:transform .3s}
+.wa__icon svg{width:32px;height:32px;fill:#fff;position:relative;z-index:1}
+.wa__label{background:var(--teal);color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:12px 18px;border-radius:100px;box-shadow:0 12px 30px rgba(0,0,0,.2);opacity:0;transform:translateX(10px);transition:.35s;pointer-events:none}
+.wa:hover .wa__icon{transform:scale(1.08)}
+.wa:hover .wa__label{opacity:1;transform:none}
+.wa__icon::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;opacity:.5;animation:waPulse 2.2s infinite}
+@keyframes waPulse{to{transform:scale(1.6);opacity:0}}
+@media (max-width:520px){.wa{right:16px;bottom:16px}.wa__icon{width:54px;height:54px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a href="#top" class="nav__logo">COMAGRO<span>BOUTIQUE</span></a>
+    <div class="nav__links" id="navLinks"></div>
+  </div>
+  <div class="nav__bar" id="navBar"></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <svg class="hero__arcs" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="a1" d="M900 -40 C1260 300 1260 640 980 960"/>
+    <path class="a2" d="M1010 -40 C1380 300 1380 640 1100 960"/>
+    <path class="a3" d="M-60 720 C380 560 820 640 1500 380"/>
+  </svg>
+  <div class="hero__grain"></div>
+
+  <div class="wrap hero__top">
+    <div class="brandmark" id="heroLogo"></div>
+    <span class="eyebrow">Propuesta de colecciones · Salón del Automóvil</span>
+  </div>
+
+  <div class="wrap hero__body">
+    <div>
+      <span class="hero__kicker eyebrow">Serranía × Automotores Comagro</span>
+      <h1 class="wordmark">
+        <small>Automotores</small>
+        <span class="w1">COMAGRO</span>
+        <span class="w2">BOUTIQUE</span>
+      </h1>
+      <p class="hero__hook">Cinco leyendas del motor. <em>Una sola forma de llevarlas puestas.</em></p>
+      <div class="rotator" aria-hidden="true"><ul id="rotator"></ul></div>
+      <div class="cta">
+        <a href="#colecciones" class="btn btn--gold">Explorar colecciones
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#resumen" class="btn btn--line">Resumen de inversión</a>
+      </div>
+      <div class="hero__stats" id="heroStats"></div>
+    </div>
+    <div class="hero__visual">
+      <div class="arch-ring"></div>
+      <div class="arch"><img src="img/portada.jpg" alt="Colección Comagro Boutique" onerror="this.style.display='none'"></div>
+      <div class="hero__badge"><span>Diseño y producción</span><strong>Serranía · Colombia</strong></div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marquee"></div></div>
+</header>
+
+<!-- ÍNDICE -->
+<section class="index" id="colecciones">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div>
+        <span class="eyebrow">Contenido</span>
+        <h2>Cinco marcas, <b>cinco colecciones</b><br>con identidad propia.</h2>
+      </div>
+      <p>Cada colección traduce los códigos de su marca (historia, carácter y estilo de vida) a prendas contemporáneas con personalización premium.</p>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<!-- COLECCIONES -->
+<main id="collections"></main>
+
+<!-- RESUMEN -->
+<section class="summary" id="resumen">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div>
+        <span class="eyebrow">Resumen de inversión</span>
+        <h2>Todo el portafolio <b>en una vista.</b></h2>
+      </div>
+      <div class="toggle" id="qtyToggle">
+        <button data-q="0" class="on">50 unidades</button>
+        <button data-q="1">100 unidades</button>
+      </div>
+    </div>
+    <div class="sum-wrap rv">
+      <table class="sum-table">
+        <thead><tr><th>Colección</th><th>Referencia</th><th>Costo Comagro</th><th>PVP sugerido</th><th>Margen</th></tr></thead>
+        <tbody id="sumBody"></tbody>
+      </table>
+    </div>
+    <p class="price-note rv">Valores por unidad en pesos colombianos, IVA incluido. Margen de utilidad calculado sobre el precio de venta sugerido.</p>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<footer class="closing">
+  <svg class="bg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M880 -40 C1240 240 1240 480 960 740" stroke="#0c232c" stroke-width="120" fill="none"/>
+    <path d="M-60 560 C380 420 820 480 1500 260" stroke="#c9a96b" stroke-opacity=".35" fill="none"/>
+  </svg>
+  <div class="wrap inner">
+    <div class="logo" id="footLogo"></div>
+    <h3>Prendas que llevan la marca <em>más allá del concesionario.</em></h3>
+    <p>Diseño, desarrollo y personalización de colecciones corporativas · serrania.co</p>
+    <div class="foot">© Serranía · Propuesta para Comagro Boutique</div>
+  </div>
+</footer>
+
+<!-- BOTÓN WHATSAPP -->
+<a class="wa" href="https://wa.me/573123778157?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20cat%C3%A1logo%20Comagro%20Boutique" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <span class="wa__label">Escríbenos</span>
+  <span class="wa__icon"><svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9 0-5.9 4.9-10.7 11-10.7s11 4.8 11 10.7-4.9 10.8-11 10.8zm6-8c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg></span>
+</a>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
+  <button class="lb__btn lb__close" id="lbClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb__btn lb__prev" id="lbPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <div class="lb__stage"><img id="lbImg" alt=""></div>
+  <button class="lb__btn lb__next" id="lbNext" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+  <div class="lb__cap"><b id="lbTag"></b><span id="lbTitle"></span><small id="lbCount"></small></div>
+</div>
+
+<script>
+/* =================================================================
+   DATOS DEL CATÁLOGO — editar aquí textos, colores y precios.
+   Rutas de imagen: img/<id colección>/<id producto>/<vista>.jpg
+   ================================================================= */
+const EXT = '.jpg';
+const PRECIO_BOLSA = 6900;
+
+const CATALOGO = [
+  {
+    id:'ford', marca:'Ford', lema:'Made to Move', sub:'Hecho para moverse.', acento:'#3c5680',
+    texto:'Una colección que interpreta la esencia de Ford desde una mirada contemporánea, llevando a las prendas los códigos que definen su identidad: carácter, libertad, exploración y movimiento. Diseños versátiles que combinan el universo automotor con una estética casual y actual, pensada para acompañar distintos escenarios y formas de vivir.',
+    productos:[
+      { id:'camiseta-ford-motor-company', tipo:'Camiseta', nombre:'Ford Motor Company',
+        desc:'Camiseta clásica con el logo script de Ford y la línea de ajedrez de competencia.',
+        colores:[['Blanco','#f4f3ef'],['Beige','#d8c2a4'],['Gris','#7e7f80']],
+        perso:[['Frente','logo Ford script azul con línea de ajedrez "Motor Company"'],['Espalda','"Detroit, Michigan · Since 1903"']],
+        detalle:'Logo frontal Ford Motor Company',
+        costo:[59381,52241], pvp:[79900,79900], margen:[26,35] },
+      { id:'camiseta-detroit-ford', tipo:'Camiseta', nombre:'Detroit Ford',
+        desc:'Homenaje a la herencia de Detroit, con las banderas de ajedrez como protagonistas en la espalda.',
+        colores:[['Negro','#1c1c1d'],['Azul navy','#1f2e55']],
+        perso:[['Pecho','óvalo "Motor Company · Built Tough"'],['Espalda','banderas de ajedrez, "Since 1903 · Detroit, Michigan · Born Ford, Born Tough"']],
+        detalle:'Logo de pecho "Built Tough"',
+        costo:[59381,52241], pvp:[89900,79900], margen:[34,35] },
+      { id:'camiseta-ford-gt', tipo:'Camiseta', nombre:'Ford GT',
+        desc:'Inspirada en el legendario GT40, ganador en Le Mans y Sebring, con sus franjas de competencia.',
+        colores:[['Crudo','#eee8da'],['Azul cielo','#a8cfe8'],['Negro','#1c1c1d']],
+        perso:[['Frente','"Ford GT · Go Further" con franjas naranja'],['Espalda','ilustración del GT40 "Won at Le Mans & Sebring"']],
+        detalle:'Gráfico Ford GT "Go Further"',
+        costo:[59381,52241], pvp:[89900,79900], margen:[34,35] },
+      { id:'hoodie-ford', tipo:'Hoodie', nombre:'Hoodie Ford',
+        desc:'Buzo con capota y acabados premium: cordones con punteras metálicas y gráficos tono sobre tono.',
+        colores:[['Gris','#858687']],
+        perso:[['Cordones','punteras metálicas'],['Frente','óvalo Ford "Detroit, Michigan · Since 1903"'],['Espalda','"Ford · Built Tough" tono sobre tono']],
+        detalle:'Punteras metálicas',
+        costo:[154581,142681], pvp:[199900,189900], margen:[23,25] },
+      { id:'chaleco-sky-ford', tipo:'Chaleco', nombre:'Chaleco Sky Ford',
+        desc:'Chaleco acolchado de líneas limpias, pensado para el clima frío y la vida al aire libre.',
+        colores:[['Gris','#8a8f95'],['Negro','#1c1c1d']],
+        perso:[['Pecho','óvalo Ford tono sobre tono'],['Espalda','"FORD"']],
+        detalle:'Logo Ford en el pecho',
+        costo:[225981,214081], pvp:[299900,279900], margen:[25,24] }
+    ]
+  },
+  {
+    id:'peugeot', marca:'Peugeot', lema:'Líneas en movimiento', sub:'Elegancia, precisión y movimiento.', acento:'#2d3d6b',
+    texto:'Inspirada en la sofisticación del diseño francés y la innovación que caracterizan a Peugeot, esta colección transforma los códigos visuales de la marca en una propuesta de vestuario contemporánea. Siluetas depuradas, materiales de calidad y detalles inspirados en el lenguaje automotriz dan vida a una línea que expresa elegancia, precisión y movimiento.',
+    productos:[
+      { id:'camiseta-basica-peugeot', tipo:'Camiseta', nombre:'Básica Peugeot',
+        desc:'Minimalismo francés: el escudo del león en alto relieve y la bandera bordada en la manga.',
+        colores:[['Azul navy','#1f2e55'],['Blanco','#f4f3ef']],
+        perso:[['Pecho','escudo del león en aplique en alto relieve'],['Manga','bandera de Francia bordada']],
+        detalle:'Aplique en alto relieve y bandera bordada',
+        costo:[59381,51051], pvp:[79900,79900], margen:[26,36] },
+      { id:'buzo-cuello-alto-peugeot', tipo:'Buzo cuello alto', nombre:'Cuello Alto Peugeot',
+        desc:'Buzo con medio cierre y cuello alto, una silueta sofisticada para el día a día.',
+        colores:[['Rojo','#b8222f'],['Negro','#17191e']], masColores:true,
+        perso:[['Pecho','logo bordado (rojo) o aplique en alto relieve (negro)'],['Manga','bandera de Francia bordada']],
+        detalle:'Logo bordado / aplique en alto relieve',
+        costo:[154581,142681], pvp:[199900,189900], margen:[23,25] }
+    ]
+  },
+  {
+    id:'fiat', marca:'Fiat', lema:'Torino District', sub:'Estilo italiano para una nueva generación.', acento:'#6d876c',
+    texto:'Torino District toma la esencia del estilo italiano y la transforma en prendas pensadas para una nueva generación: personas que buscan vestir con autenticidad, sofisticación y versatilidad sin renunciar a la comodidad. La colección encuentra el equilibrio entre el legado automotriz de Fiat y la estética urbana actual; cada silueta refleja un diseño limpio, detalles precisos y acabados que hablan de calidad más que de ostentación.',
+    productos:[
+      { id:'camiseta-clasica-fiat', tipo:'Camiseta', nombre:'Clásica Fiat',
+        desc:'El icónico Fiat 600 y las calles de Torino en una camiseta de aire vintage.',
+        colores:[['Crudo','#efe6d2']],
+        perso:[['Pecho','logo "Fiat" script en aplique en alto relieve'],['Espalda','"Torino", Fiat 600 e "Italia · 1899"']],
+        detalle:'Aplique Fiat en alto relieve',
+        costo:[59381,52241], pvp:[89900,79900], margen:[34,35] },
+      { id:'buzo-abierto-fiat', tipo:'Buzo abierto', nombre:'Buzo Abierto Fiat',
+        desc:'Buzo con cierre completo y cuello alto, con escudo heráldico de Torino.',
+        colores:[['Crudo','#efe6d2']],
+        perso:[['Pecho','escudo Fiat Torino, personalización mixta DTF + bordado'],['Espalda','"Torino · Italia · 1899" con bandera de Italia bordada']],
+        detalle:'Escudo Torino DTF + bordado',
+        costo:[166481,154581], pvp:[229900,209900], margen:[28,26] }
+    ]
+  },
+  {
+    id:'jeep', marca:'Jeep', lema:'Más allá del camino', sub:'Para quienes llevan la exploración en su ADN.', acento:'#7a705a',
+    texto:'Jeep no se trata solo de aventurarse en nuevos caminos, sino de pertenecer a una comunidad de exploradores que han convertido la naturaleza, la libertad y el descubrimiento en parte de su identidad. Una colección diseñada para quienes llevan la exploración en su ADN.',
+    productos:[
+      { id:'camiseta-freedom', tipo:'Camiseta', nombre:'Básica Freedom',
+        desc:'Espíritu outdoor con la ilustración "Freedom takes the wheel".',
+        colores:[['Verde','#6b8e6a']],
+        perso:[['Pecho','logo Jeep'],['Espalda','ilustración "Freedom takes the wheel · Outdoor lifestyle"']],
+        detalle:'Ilustración Freedom',
+        costo:[59381,52241], pvp:[79900,79900], margen:[26,35] },
+      { id:'buzo-basico-jeep', tipo:'Buzo', nombre:'Buzo Básico Jeep',
+        desc:'Buzo cuello redondo con logo camuflado y parche retro en la manga.',
+        colores:[['Arena','#efe3c3']],
+        perso:[['Frente','logo Jeep con relleno camuflado'],['Manga','parche hexagonal retro bordado']],
+        detalle:'Logo bordado hexagonal',
+        costo:[130781,118881], pvp:[179900,159900], margen:[27,26] },
+      { id:'chaqueta-jeep-aventour', tipo:'Chaqueta', nombre:'Chaqueta Jeep Aventour',
+        desc:'Chaqueta tipo bomber con forro 100% personalizado, que aporta sofisticación y fortalece la identidad de marca.',
+        colores:[['Verde oliva','#4e593b']],
+        perso:[['Manga','parche Jeep bordado'],['Pecho','logo Jeep tono sobre tono'],['Forro','estampado exclusivo con iconografía outdoor Jeep']],
+        detalle:'Forro personalizado', extra:[['detalle-2','Patrón del forro']],
+        costo:[225981,214081], pvp:[299900,279900], margen:[25,24] }
+    ]
+  },
+  {
+    id:'ram', marca:'RAM', lema:'Fuerza que trasciende', sub:'"La verdadera fuerza no se mide únicamente por la potencia."', acento:'#6d6d6f',
+    texto:'Fuerza que Trasciende representa a quienes enfrentan los desafíos con determinación, lideran con el ejemplo y construyen un legado a través de cada decisión y cada esfuerzo. Inspirada en lo que hoy es RAM, la colección fusiona resistencia, carácter y funcionalidad en prendas que acompañan un estilo de vida activo y decidido.',
+    productos:[
+      { id:'camiseta-basica-ram', tipo:'Camiseta', nombre:'Básica RAM',
+        desc:'El escudo RAM Trucks en gran formato, con carácter robusto y funcional.',
+        colores:[['Arena','#bca996']],
+        perso:[['Pecho','logo RAM pequeño'],['Espalda','"RAM · Trucks" con escudo en tono cobre']],
+        detalle:'Escudo RAM Trucks',
+        costo:[59381,53431], pvp:[79900,79900], margen:[26,33] }
+    ]
+  }
+];
+
+/* ================================================================= */
+const $ = (s,c=document)=>c.querySelector(s);
+const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+const money = n => '$' + n.toLocaleString('es-CO');
+const slug = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+const pad = n => String(n).padStart(2,'0');
+const ICON_IMG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5-5-9 8"/></svg>';
+const ARROW_R = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>';
+const ARROW_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>';
+
+/* Espacio de imagen con marcador si no existe el archivo */
+function slot(src, label, cls='', tag='', title=''){
+  return `<figure class="slot ${cls}" data-tag="${tag}" data-title="${title}">
+    <img src="${src}" alt="${title} · ${label}" loading="lazy" data-base="${src}"
+      onerror="imgError(this)">
+    ${cls.includes('nolabel')?'':`<span class="slot-label">${label}</span>`}
+    <div class="ph">${ICON_IMG}<span>${label}</span><small>${src}</small></div>
+  </figure>`;
+}
+function imgError(img){
+  // Si falla una variante de color, vuelve a la imagen principal
+  if(img.dataset.base && img.getAttribute('src') !== img.dataset.base){ img.src = img.dataset.base; return; }
+  img.closest('.slot').classList.add('empty');
+}
+
+/* Logo Serranía (imagen o texto de respaldo) */
+function logoHTML(h){
+  return `<img src="img/serrania-logo.png" alt="Serranía" style="height:${h}px" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'txt',textContent:'Serranía'}))">`;
+}
+$('#heroLogo').innerHTML = logoHTML(34);
+$('#footLogo').innerHTML = logoHTML(90);
+
+/* Hero dinámico */
+const totalRefs = CATALOGO.reduce((a,c)=>a+c.productos.length,0);
+$('#rotator').innerHTML = [...CATALOGO, CATALOGO[0]].map(c=>`<li><b>${c.marca.toUpperCase()}</b><i></i>${c.lema}</li>`).join('');
+$('#heroStats').innerHTML = `
+  <div><strong>${pad(CATALOGO.length)}</strong><span>Colecciones</span></div>
+  <div><strong>${pad(totalRefs)}</strong><span>Referencias</span></div>
+  <div><strong>${pad(CATALOGO.length)}</strong><span>Bolsas Boutique</span></div>`;
+const mq = CATALOGO.map(c=>`<span>${c.marca.toUpperCase()}</span><span>${c.lema.toUpperCase()}</span>`).join('');
+$('#marquee').innerHTML = mq + mq;
+
+/* Índice y navegación */
+$('#cards').innerHTML = CATALOGO.map((c,i)=>`
+  <a href="#${c.id}" class="card rv" style="--c:${c.acento};transition-delay:${i*80}ms">
+    <img src="img/${c.id}/portada${EXT}" alt="" onerror="this.remove()">
+    <span class="card__n">${pad(i+1)}</span>
+    <div class="card__body">
+      <div class="card__brand">${c.marca}</div>
+      <div class="card__lema">${c.lema}</div>
+      <div class="card__meta"><span>${pad(c.productos.length)} ${c.productos.length>1?'referencias':'referencia'}</span>${ARROW_R}</div>
+    </div>
+  </a>`).join('');
+$('#navLinks').innerHTML = CATALOGO.map(c=>`<a href="#${c.id}" data-id="${c.id}">${c.marca}</a>`).join('') + `<a href="#resumen" data-id="resumen">Resumen</a>`;
+
+/* Colecciones */
+function priceTable(p){
+  return `<div class="price"><table>
+    <thead><tr><th>Ref. ${p.tipo}</th><th class="q0">50 und</th><th class="q1">100 und</th></tr></thead>
+    <tbody>
+      <tr><td>Costo Comagro · IVA incl.</td><td class="q0">${money(p.costo[0])}</td><td class="q1">${money(p.costo[1])}</td></tr>
+      <tr class="pv"><td>PVP sugerido · IVA incl.</td><td class="q0">${money(p.pvp[0])}</td><td class="q1">${money(p.pvp[1])}</td></tr>
+      <tr class="mg"><td>Margen de utilidad</td><td class="q0">${p.margen[0]}%</td><td class="q1">${p.margen[1]}%</td></tr>
+    </tbody></table></div>`;
+}
+function productSlide(c,p,i){
+  const base = `img/${c.id}/${p.id}/`;
+  const title = `${p.tipo} · ${p.nombre}`;
+  const tag = `Colección ${c.marca}`;
+  const extras = (p.extra||[]).map(([f,l])=>slot(base+f+EXT,l,'detail',tag,title)).join('');
+  return `<article class="slide" data-name="${p.nombre}">
+    <div class="wrap prod">
+      <div class="prod__model rv">
+        <span class="prod__ref">${pad(i+1)} · ${c.marca}</span>
+        ${slot(base+'modelo'+EXT,'Modelo','nolabel',tag,title)}
+      </div>
+      <div class="prod__info rv">
+        <span class="prod__type">${p.tipo}</span>
+        <h3 class="prod__name">${p.tipo==='Camiseta'?'Camiseta ':''}<b>${p.nombre}</b></h3>
+        <p class="prod__desc">${p.desc}</p>
+        <div class="gallery">
+          ${slot(base+'producto'+EXT,'Producto','v-producto',tag,title)}
+          ${slot(base+'frente'+EXT,'Frente','v-frente',tag,title)}
+          ${slot(base+'posterior'+EXT,'Posterior','v-posterior',tag,title)}
+          ${slot(base+'detalle'+EXT,p.detalle,'detail',tag,title)}
+          ${extras}
+        </div>
+        <div class="specs">
+          <div>
+            <h4>Variaciones de color</h4>
+            <div class="swatches">
+              ${p.colores.map(([n,hex],k)=>`<button class="sw ${k===0?'active':''}" style="--c:${hex}" data-color="${k===0?'':slug(n)}" data-base="${base}"><i></i>${n}</button>`).join('')}
+              ${p.masColores?'<span class="sw note">+ más opciones de color</span>':''}
+            </div>
+          </div>
+          <div>
+            <h4>Personalización</h4>
+            <ul class="perso">${p.perso.map(([k,v])=>`<li><span><b>${k}:</b> ${v}</span></li>`).join('')}</ul>
+          </div>
+        </div>
+        ${priceTable(p)}
+      </div>
+    </div>
+  </article>`;
+}
+function bagSlide(c){
+  return `<article class="slide" data-name="Bolsa Boutique">
+    <div class="wrap"><div class="bag rv">
+      ${slot(`img/${c.id}/bolsa${EXT}`,'Bolsa Boutique','',`Colección ${c.marca}`,'Bolsa Boutique')}
+      <div>
+        <span class="prod__type">Complemento</span>
+        <h3 class="prod__name">Bolsa <b>Boutique ${c.marca}</b></h3>
+        <p class="prod__desc">Bolsa de doble cara: Comagro Boutique por un lado y ${c.marca} por el otro. Cierra la experiencia de compra con la identidad de las dos marcas.</p>
+        <div class="bag__price">${money(PRECIO_BOLSA)}</div>
+        <p class="price-note">Valor unitario.</p>
+      </div>
+    </div></div>
+  </article>`;
+}
+$('#collections').innerHTML = CATALOGO.map((c,ci)=>`
+  <section class="coll" id="${c.id}" style="--accent:${c.acento}">
+    <div class="coll__open">
+      <span class="coll__stripe"></span>
+      <div class="wrap coll__open-in">
+        <div class="coll__intro rv">
+          <span class="coll__num">COLECCIÓN ${pad(ci+1)} / ${pad(CATALOGO.length)}</span>
+          <h2 class="coll__brand"><img src="img/${c.id}/logo.png" alt="${c.marca}" onerror="this.replaceWith(document.createTextNode('${c.marca}'))"></h2>
+          <p class="coll__lema">${c.lema}</p>
+          <p class="coll__sub">${c.sub}</p>
+          <p class="coll__txt">${c.texto}</p>
+          <div class="coll__tags">
+            <span class="tag">${pad(c.productos.length)} ${c.productos.length>1?'referencias':'referencia'}</span>
+            <span class="tag">+ Bolsa Boutique</span>
+          </div>
+        </div>
+        <div class="coll__visual">${slot(`img/${c.id}/portada${EXT}`,'Imagen de colección','nolabel',`Colección ${c.marca}`,c.lema)}</div>
+      </div>
+    </div>
+    <div class="coll__bar">
+      <div class="wrap coll__bar-in">
+        <div class="chips">${c.productos.map((p,i)=>`<button class="chip ${i===0?'active':''}" data-i="${i}">${p.nombre}</button>`).join('')}<button class="chip" data-i="${c.productos.length}">Bolsa Boutique</button></div>
+        <div class="arrows">
+          <button class="arrow prev" aria-label="Producto anterior" disabled>${ARROW_L}</button>
+          <span class="counter"><b>01</b> / ${pad(c.productos.length+1)}</span>
+          <button class="arrow next" aria-label="Producto siguiente">${ARROW_R}</button>
+        </div>
+      </div>
+    </div>
+    <div class="rail">${c.productos.map((p,i)=>productSlide(c,p,i)).join('')}${bagSlide(c)}</div>
+  </section>`).join('');
+
+/* Carruseles horizontales */
+$$('.coll').forEach(sec=>{
+  const rail = $('.rail',sec), chips = $$('.chip',sec), prev = $('.prev',sec), next = $('.next',sec), counter = $('.counter b',sec);
+  const n = chips.length;
+  const cur = ()=>Math.round(rail.scrollLeft / rail.clientWidth);
+  const go = i=>rail.scrollTo({left:Math.max(0,Math.min(n-1,i))*rail.clientWidth});
+  const update = ()=>{
+    const i = cur();
+    chips.forEach((c,k)=>c.classList.toggle('active',k===i));
+    chips[i]?.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+    prev.disabled = i===0; next.disabled = i===n-1; counter.textContent = pad(i+1);
+    $$('.rv',rail.children[i]).forEach(e=>e.classList.add('in'));
+  };
+  let t; rail.addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(update,80)});
+  chips.forEach((c,k)=>c.addEventListener('click',()=>go(k)));
+  prev.addEventListener('click',()=>go(cur()-1));
+  next.addEventListener('click',()=>go(cur()+1));
+  sec.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'&&!lbOpen){go(cur()+1)} if(e.key==='ArrowLeft'&&!lbOpen){go(cur()-1)} });
+});
+
+/* Variaciones de color: cambia frente/posterior si existen imágenes por color */
+document.addEventListener('click',e=>{
+  const sw = e.target.closest('.sw:not(.note)'); if(!sw) return;
+  const slide = sw.closest('.slide');
+  $$('.sw',slide).forEach(s=>s.classList.toggle('active',s===sw));
+  ['frente','posterior'].forEach(v=>{
+    const fig = $('.v-'+v,slide), img = $('img',fig);
+    const src = sw.dataset.color ? `${sw.dataset.base}${v}-${sw.dataset.color}${EXT}` : img.dataset.base;
+    fig.classList.remove('empty'); img.style.opacity=.3;
+    img.onload = ()=>img.style.opacity=1; img.src = src;
+  });
+});
+
+/* Resumen de inversión */
+let qty = 0;
+function renderSummary(){
+  $('#sumBody').innerHTML = CATALOGO.flatMap(c=>c.productos.map((p,i)=>`
+    <tr data-c="${c.id}" data-i="${i}"><td>${c.marca}</td><td>${p.tipo==='Camiseta'?'Camiseta ':''}${p.nombre}</td>
+    <td>${money(p.costo[qty])}</td><td><b>${money(p.pvp[qty])}</b></td><td class="mg">${p.margen[qty]}%</td></tr>`)).join('')
+    + `<tr data-c="ford" data-i="99"><td>Todas</td><td>Bolsa Boutique (por marca)</td><td colspan="3">${money(PRECIO_BOLSA)}</td></tr>`;
+  $$('.price').forEach(t=>{ $$('.q0',t).forEach(e=>e.classList.toggle('hl',qty===0)); $$('.q1',t).forEach(e=>e.classList.toggle('hl',qty===1)); });
+}
+$$('#qtyToggle button').forEach(b=>b.addEventListener('click',()=>{
+  qty = +b.dataset.q; $$('#qtyToggle button').forEach(x=>x.classList.toggle('on',x===b)); renderSummary();
+}));
+$('#sumBody').addEventListener('click',e=>{
+  const tr = e.target.closest('tr'); if(!tr) return;
+  const sec = document.getElementById(tr.dataset.c); sec.scrollIntoView({behavior:'smooth'});
+  const i = tr.dataset.i==='99' ? $$('.chip',sec).length-1 : +tr.dataset.i;
+  setTimeout(()=>$$('.chip',sec)[i].click(),650);
+});
+renderSummary();
+
+/* Lightbox */
+let lbList = [], lbIdx = 0, lbOpen = false;
+const lb = $('#lb'), lbImg = $('#lbImg');
+function showLb(){
+  const f = lbList[lbIdx], img = $('img',f);
+  lbImg.classList.remove('ready','zoomed');
+  const label = $('.slot-label',f)?.textContent || $('.ph span',f).textContent;
+  setTimeout(()=>{ lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt; lbImg.onload=()=>lbImg.classList.add('ready'); if(lbImg.complete) lbImg.classList.add('ready'); },120);
+  $('#lbTag').textContent = f.dataset.tag;
+  $('#lbTitle').textContent = `${f.dataset.title} — ${label}`;
+  $('#lbCount').textContent = `${lbIdx+1} / ${lbList.length}`;
+  $('#lbPrev').style.display = $('#lbNext').style.display = lbList.length>1?'grid':'none';
+}
+document.addEventListener('click',e=>{
+  const f = e.target.closest('.slot'); if(!f || f.classList.contains('empty')) return;
+  const scope = f.closest('.slide') || f.closest('.coll__open') || document;
+  lbList = $$('.slot',scope).filter(s=>!s.classList.contains('empty'));
+  lbIdx = lbList.indexOf(f); lbOpen = true; lb.classList.add('open'); document.body.style.overflow='hidden'; showLb();
+});
+const closeLb = ()=>{ lb.classList.remove('open'); lbOpen=false; document.body.style.overflow=''; };
+const stepLb = d=>{ lbIdx = (lbIdx+d+lbList.length)%lbList.length; showLb(); };
+$('#lbClose').onclick = closeLb; $('#lbPrev').onclick = ()=>stepLb(-1); $('#lbNext').onclick = ()=>stepLb(1);
+lb.addEventListener('click',e=>{ if(e.target===lb || e.target.classList.contains('lb__stage')) closeLb(); });
+lbImg.addEventListener('click',()=>lbImg.classList.toggle('zoomed'));
+document.addEventListener('keydown',e=>{ if(!lbOpen) return; if(e.key==='Escape')closeLb(); if(e.key==='ArrowRight')stepLb(1); if(e.key==='ArrowLeft')stepLb(-1); });
+let tx=0; lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-tx; if(Math.abs(d)>50) stepLb(d<0?1:-1); });
+
+/* Navegación fija, progreso y sección activa */
+const nav = $('#nav'), bar = $('#navBar'), hero = $('.hero');
+const secs = [...CATALOGO.map(c=>document.getElementById(c.id)), $('#resumen')];
+addEventListener('scroll',()=>{
+  const y = scrollY;
+  nav.classList.toggle('show', y > hero.offsetHeight*.7);
+  bar.style.width = (y/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
+  let act = null; secs.forEach(s=>{ if(s.getBoundingClientRect().top < innerHeight*.4) act = s.id; });
+  $$('#navLinks a').forEach(a=>a.classList.toggle('active',a.dataset.id===act));
+},{passive:true});
+
+/* Animaciones de entrada */
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
+$$('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>
